@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cat "set -o vi" >> ~/.bashrc
-cat "export EDITOR=vim" >> ~/.bashrc
+echo "set -o vi" >> ~/.bashrc
+echo "export EDITOR=vim" >> ~/.bashrc
