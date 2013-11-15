@@ -1,3 +1,5 @@
-set tabstop=4
-set shiftwidth=4
-set expandtab
+#!/bin/sh
+
+echo set tabstop=4 >> ~/.vimrc
+echo set shiftwidth=4 >> ~/.vimrc
+echo set expandtab >> ~/.vimrc
