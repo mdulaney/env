@@ -1,0 +1,6 @@
+GIT
+Pull a remote branch
+  git checkout -b <branch> origin/<branch>
+Diff a file
+  git diff <commit> <commit> -- <path>
+
