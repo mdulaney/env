@@ -50,7 +50,7 @@
 		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="113" command="newtab2"/>
 		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="114" command="newtab3"/>
 		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="115" command="newtab4"/>
-		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="116" command="newtab5"/>
+		<hotkey ctrl="0" shift="0" alt="0" extended="0" code="116" command="newtab5"/>
 		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="117" command="newtab6"/>
 		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="118" command="newtab7"/>
 		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="119" command="newtab8"/>
