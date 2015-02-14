@@ -4,7 +4,10 @@ set shiftwidth=4
 set number
 set cc=80
 syntax on
-nmap <C-]> :vsc Edit.GoToDefinition<CR>
+
+execute pathogen#infect()
+
+autocmd vimenter * NERDTree
 
 set rtp+=C:\go\misc\vim
 filetype plugin indent on
