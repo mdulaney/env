@@ -15,10 +15,11 @@ if [ "$GIT_REMOTE" == "" ]; then
 fi
 
 if [ "$GIT_USER" == "" ]; then
-    GIT_USER=mdulaney
+    GIT_USER=git
     echo GIT_USER var not defined setting it to default: $GIT_USER
 fi
 
+echo Cloning from $GIT_USER@${GIT_REMOTE}
 for r in $REPOS
 do
     git clone $GIT_USER@${GIT_REMOTE}${r} ${BUNDLE_DIR}/$(basename $r)
