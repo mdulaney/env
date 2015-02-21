@@ -10,19 +10,21 @@ if [ ! -d "$BUNDLE_DIR" ]; then
 fi
 
 if [ "$GIT_REMOTE" == "" ]; then
-    GIT_REMOTE=github.com:
-    echo GIT_REMOTE var not defined setting it to default: $GIT_USER
+    GIT_REMOTE_PATH=https://github.com/ 
+    echo GIT_REMOTE var not defined setting it to default: ${GIT_REMOTE_PATH}
+else
+    if [ "$GIT_USER" == "" ]; then
+        GIT_USER=mdulaney
+        echo GIT_USER var not defined setting it to default: $GIT_USER
+    fi
+
+    GIT_REMOTE_PATH=$GIT_USER@${GIT_REMOTE}
 fi
 
-if [ "$GIT_USER" == "" ]; then
-    GIT_USER=git
-    echo GIT_USER var not defined setting it to default: $GIT_USER
-fi
-
-echo Cloning from $GIT_USER@${GIT_REMOTE}
+echo Cloning vim plugins from ${GIT_REMOTE_PATH}
 for r in $REPOS
 do
-    git clone $GIT_USER@${GIT_REMOTE}${r} ${BUNDLE_DIR}/$(basename $r)
+    git clone ${GIT_REMOTE_PATH}${r} ${BUNDLE_DIR}/$(basename $r)
     if [ $? != 0 ]; then
         echo Error: failed to clone repo, exiting
         exit 1
