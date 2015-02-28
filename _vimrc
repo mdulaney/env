@@ -13,6 +13,9 @@ set rtp+=C:\go\misc\vim
 filetype plugin indent on
 syntax on
 
+let g:ag_prg="ag --column --nogroup --nohead"
 map <C-n> :NERDTreeToggle<CR>
+
+autocmd FileType make setlocal noexpandtab
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
