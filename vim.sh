@@ -13,5 +13,6 @@ echo set cc=80 >> ~/.vimrc
 echo execute pathogen#infect() >> ~/.vimrc
 
 echo autocmd vimenter * NERDTree >> ~/.vimrc
+echo autocmd FileType make setlocal noexpandtab >> ~/.vimrc
 
 let g:ag_prg="ag --column --nogroup --nohead" >> ~/.vimrc
