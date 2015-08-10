@@ -27,13 +27,14 @@ git config --global user.name "Mike Dulaney"
 git config --global user.email k.michael.dulaney@gmail.com
 git config --global color.ui auto
 git config --global branch.autosetupmerge always
+git config --global push.default simple
 
 ### Setup vim plugins ###
 REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git"
 BUNDLE_DIR=~/.vim/bundle
 
 mkdir -p ~/.vim/autoload
-cp vim-plugins/autoload/pathogen.vim ~/.vim/autload
+cp vim-plugins/autoload/pathogen.vim ~/.vim/autoload
 
 if [ ! -d "$BUNDLE_DIR" ]; then
     echo Warning: bundle directory $BUNDLE_DIR does not exist, creating it
