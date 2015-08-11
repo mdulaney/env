@@ -16,6 +16,7 @@ let g:ag_prg="ag --column --nogroup --nohead"
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+set runtimepath+=$GOROOT/misc/vim
 
 nnoremap <space>ga :Git add %:p<CR><CR>
 nnoremap <space>gs :Gstatus<CR>

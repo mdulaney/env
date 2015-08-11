@@ -2,6 +2,11 @@
 
 set -e
 
+if [ "$GOROOT" == "" ];
+then
+    GOROOT=$(go env GOROOT)
+fi
+
 ### Install Packages ###
 if [ "$MACHTYPE" != "x86_64-apple-darwin14" ];
 then
@@ -34,6 +39,9 @@ REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose
 BUNDLE_DIR=~/.vim/bundle
 
 mkdir -p ~/.vim/autoload
+mkdir -p ~/.vim/syntax
+mkdir -p ~/.vim/ftdetect
+
 cp vim-plugins/autoload/pathogen.vim ~/.vim/autoload
 
 if [ ! -d "$BUNDLE_DIR" ]; then
@@ -64,6 +72,28 @@ do
       fi
     fi
 done
+
+if [ "$GOROOT" != "" ];
+then
+    echo Found go located at: $GOROOT
+    echo Setting up vim syntax highlighting for go
+    
+    if [ -e "$GOROOT/misc/vim/ftdetect/gofiletype.vim" ];
+    then
+        ln -s $GOROOT/misc/vim/ftdetect/gofiletype.vim $HOME/.vim/ftdetect
+    fi
+    
+    if [ -e "$GOROOT/misc/vim/syntax/go.vim" ];
+    then
+        ln -s $GOROOT/misc/vim/syntax/go.vim $HOME/.vim/syntax
+    fi
+    
+    if [ -e "$GOROOT/misc/vim/autoload/go/complete.vim" ];
+    then 
+        mkdir -p $HOME/.vim/autoload/go
+        ln -s $GOROOT/misc/vim/autoload/go/complete.vim $HOME/.vim/autoload/go
+    fi
+fi
 
 echo Done.
 exit 0
