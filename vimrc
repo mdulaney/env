@@ -33,3 +33,4 @@ nnoremap <space>gb :Git branch<Space>
 nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Gpush<CR>
 nnoremap <space>gpl :Gpull<CR>
+nnoremap <space>grm :Gremove<CR>
