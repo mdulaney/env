@@ -6,6 +6,8 @@ set number
 set hlsearch
 set cc=80
 
+syntax on
+
 execute pathogen#infect()
 
 autocmd vimenter * NERDTree
