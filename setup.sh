@@ -27,15 +27,21 @@ cp .tmux.conf ~/.tmux.conf
 cp .xinitrc  ~/.xinitrc
 
 ### Setup git Config ###
-cp gitconfig ~/.gitconfig
+rm ~/.gitconfig || true
 git config --global user.name "Mike Dulaney"
 git config --global user.email k.michael.dulaney@gmail.com
 git config --global color.ui auto
 git config --global branch.autosetupmerge always
 git config --global push.default simple
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.co checkout
+git config --global alias.df diff
+git config --global alias.lg log -p
 
 ### Setup vim plugins ###
-REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git"
+REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git fs111/pydoc.vim.git"
 BUNDLE_DIR=~/.vim/bundle
 
 mkdir -p ~/.vim/autoload

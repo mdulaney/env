@@ -10,6 +10,8 @@ syntax on
 
 execute pathogen#infect()
 
+filetype plugin on
+
 autocmd vimenter * NERDTree
 
 let g:ag_prg="ag --column --nogroup --nohead"
