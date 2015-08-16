@@ -2,11 +2,6 @@
 
 set -e
 
-if [ "$GOROOT" == "" ];
-then
-    GOROOT=$(go env GOROOT)
-fi
-
 ### Install Packages ###
 if [ "$MACHTYPE" != "x86_64-apple-darwin14" ];
 then
@@ -78,6 +73,12 @@ do
       fi
     fi
 done
+
+# Setup golang if it's installed
+if [ "$GOROOT" == "" ] && [ "$(which go)" != "" ];
+then
+    GOROOT=$(go env GOROOT)
+fi
 
 if [ "$GOROOT" != "" ];
 then
