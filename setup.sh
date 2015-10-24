@@ -3,7 +3,7 @@
 set -e
 
 ### Install Packages ###
-if [ "$MACHTYPE" != "x86_64-apple-darwin14" ];
+if [ "$MACHTYPE" != "x86_64-apple-darwin14" ] && [ "$SKIP_APT_GET" == "" ];
 then
 sudo apt-get install vim wireshark tmux xmonad gcc gdb ctags cifs-utils \
               chromium-browser irssi python-dev python-setuptools python-pip \
