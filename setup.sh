@@ -37,7 +37,7 @@ git config --global alias.lg log -p
 git config --global alias.lg1 "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 ### Setup vim plugins ###
-REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git fs111/pydoc.vim.git"
+REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git fs111/pydoc.vim.git scrooloose/syntastic"
 BUNDLE_DIR=~/.vim/bundle
 
 mkdir -p ~/.vim/autoload
