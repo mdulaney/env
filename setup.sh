@@ -21,6 +21,9 @@ cp .inputrc ~/.inputrc
 cp .tmux.conf ~/.tmux.conf
 cp .xinitrc  ~/.xinitrc
 
+### Copy gnome profile
+cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
+
 ### Setup git Config ###
 rm ~/.gitconfig || true
 git config --global user.name "Mike Dulaney"
