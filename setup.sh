@@ -1,10 +1,10 @@
 #!/bin/bash
 
 set -e
-
 ### Install Packages ###
 if [ "$MACHTYPE" != "x86_64-apple-darwin14" ];
 then
+sudo apt-get update
 sudo apt-get install vim wireshark tmux xmonad gcc gdb ctags cifs-utils \
               chromium-browser irssi python-dev python-setuptools python-pip \
               socat

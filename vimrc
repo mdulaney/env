@@ -36,3 +36,6 @@ nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Gpush<CR>
 nnoremap <space>gpl :Gpull<CR>
 nnoremap <space>grm :Gremove<CR>
+
+:command -nargs=* Make make | cwindow 15
+:map <Leader>b :Make<CR>
