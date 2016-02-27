@@ -1,8 +1,8 @@
 #!/bin/bash
 
 TMP_DIR=~/tmp
-CONQUE_ARCHIVE=conque_2.3.tar.gz
-CONQUE_URL=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/conque/${CONQUE_ARCHIVE}
+CONQUE_DIR=Conque-GDB
+CONQUE_URL=https://github.com/vim-scripts/Conque-GDB.git
 
 set -e
 ### Install Packages ###
@@ -34,12 +34,12 @@ then
     mkdir -p ${TMP_DIR}
 fi
 
-if [ ! -e ${TMP_DIR}/${CONQUE_ARCHIVE} ];
+if [ ! -e ${TMP_DIR}/${CONQUE_DIR} ];
 then
-    (cd ${TMP_DIR} && wget ${CONQUE_URL} && tar -xzvf ${CONQUE_ARCHIVE} && \
-     rsync -avh ${CONQUE_ARCHIVE%.tar.gz} ~/.vim
-    )
+    (cd ${TMP_DIR} && git clone ${CONQUE_URL})
 fi
+
+rsync -avh ${TMP_DIR}/${CONQUE_DIR}/* ~/.vim
 
 ### Copy gnome profile
 cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
@@ -61,6 +61,7 @@ git config --global alias.lg1 "log --graph --abbrev-commit --decorate --date=rel
 
 ### Setup vim plugins ###
 REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git fs111/pydoc.vim.git scrooloose/syntastic"
+
 BUNDLE_DIR=~/.vim/bundle
 
 mkdir -p ~/.vim/autoload
