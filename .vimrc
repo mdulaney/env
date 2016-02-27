@@ -43,3 +43,5 @@ nnoremap <space>grm :Gremove<CR>
 :map <leader>cp :ConqueTermSplit python<CR>
 :map <leader>cs :ConqueTermSplit bash<CR>
 
+let g:ConqueTerm_CloseOnEnd = 1
+
