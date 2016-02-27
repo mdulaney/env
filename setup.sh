@@ -2,7 +2,7 @@
 
 TMP_DIR=~/tmp
 CONQUE_DIR=Conque-GDB
-CONQUE_URL=https://github.com/vim-scripts/Conque-GDB.git
+CONQUE_REPO=vim-scripts/Conque-GDB.git
 
 set -e
 ### Install Packages ###
@@ -33,13 +33,6 @@ if [ ! -e ${TMP_DIR} ];
 then
     mkdir -p ${TMP_DIR}
 fi
-
-if [ ! -e ${TMP_DIR}/${CONQUE_DIR} ];
-then
-    (cd ${TMP_DIR} && git clone ${CONQUE_URL})
-fi
-
-rsync -avh ${TMP_DIR}/${CONQUE_DIR}/* ~/.vim
 
 ### Copy gnome profile
 cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
@@ -98,6 +91,15 @@ do
       fi
     fi
 done
+
+# Install Conque-GDB
+echo Cloning and installing Conque-GDB
+if [ ! -e ${TMP_DIR}/${CONQUE_DIR} ];
+then
+    (cd ${TMP_DIR} && git clone ${GIT_REMOTE_PATH}${CONQUE_REPO})
+fi
+
+rsync -avh ${TMP_DIR}/${CONQUE_DIR}/* ~/.vim
 
 # Setup golang if it's installed
 if [ "$GOROOT" == "" ] && [ "$(which go)" != "" ];
