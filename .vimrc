@@ -39,3 +39,7 @@ nnoremap <space>grm :Gremove<CR>
 
 :command -nargs=* Make make | cwindow 15
 :map <Leader>b :Make<CR>
+
+:map <leader>p :ConqueTermSplit python<CR>
+:map <leader>s :ConqueTermSplit bash<CR>
+

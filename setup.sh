@@ -1,25 +1,45 @@
 #!/bin/bash
 
+TMP_DIR=~/tmp
+CONQUE_ARCHIVE=conque_2.3.tar.gz
+CONQUE_URL=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/conque/${CONQUE_ARCHIVE}
+
 set -e
 ### Install Packages ###
 if [ "$MACHTYPE" != "x86_64-apple-darwin14" ];
 then
-sudo apt-get update
-sudo apt-get install vim wireshark tmux xmonad gcc gdb ctags cifs-utils \
-              chromium-browser irssi python-dev python-setuptools python-pip \
-              socat
+    sudo apt-get update
+    sudo apt-get install vim wireshark tmux xmonad gcc gdb ctags cifs-utils \
+                  chromium-browser irssi python-dev python-setuptools python-pip \
+                  socat
 fi
 
-### Setup Shell Config ###
-cp bashrc ~/.bashrc
+CONFIG_FILES=".bashrc .vimrc .inputrc .xinitrc .tmux.conf"
 
-### Setup vim Config
-cp vimrc ~/.vimrc
+### Create symbolic links to the config files
+for c in ${CONFIG_FILES};
+do
+    echo "Creating symbolic link for file ${c}"
+    if [ -e ~/${c} ] || [ -f ~/${c} ];
+    then
+        # In case the target isn't a symbolic link. Delete it
+        rm -f ~/${c}
+        # Add a symbolic link
+    fi
+    ln -fs $(pwd)/${c} ~/${c} 
+done
 
-### Setup miscellaneous Configs ###
-cp .inputrc ~/.inputrc
-cp .tmux.conf ~/.tmux.conf
-cp .xinitrc  ~/.xinitrc
+if [ ! -e ${TMP_DIR} ];
+then
+    mkdir -p ${TMP_DIR}
+fi
+
+if [ ! -e ${TMP_DIR}/${CONQUE_ARCHIVE} ];
+then
+    (cd ${TMP_DIR} && wget ${CONQUE_URL} && tar -xzvf ${CONQUE_ARCHIVE} && \
+     rsync -avh ${CONQUE_ARCHIVE%.tar.gz} ~/.vim
+    )
+fi
 
 ### Copy gnome profile
 cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
