@@ -6,7 +6,7 @@ CONQUE_URL=https://github.com/vim-scripts/Conque-GDB.git
 
 set -e
 ### Install Packages ###
-if [ "$MACHTYPE" != "x86_64-apple-darwin14" ];
+if [ "$MACHTYPE" != "x86_64-apple-darwin14" ] && [ "$SKIP_APT_GET" == "" ];
 then
     sudo apt-get update
     sudo apt-get install vim wireshark tmux xmonad gcc gdb ctags cifs-utils \
