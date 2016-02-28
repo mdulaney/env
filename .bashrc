@@ -8,3 +8,8 @@ if [ "$(which go)" != "" ];
 then
 export GOROOT=$(go env GOROOT)
 fi
+
+if [ -e ~/.bashrc.local ];
+then
+    . ~/.bashrc.local
+fi
