@@ -4,6 +4,24 @@ TMP_DIR=~/tmp
 CONQUE_DIR=Conque-GDB
 CONQUE_REPO=vim-scripts/Conque-GDB.git
 
+GITV_REPO=gregsexton/gitv
+GITV_DIR=gitv
+
+install_vim_plugin_from_repo() {
+    repo=$1 
+    localdir=$2
+
+    if [ ! -e ${TMP_DIR}/${localdir} ];
+    then
+        (cd ${TMP_DIR} && git clone ${GIT_REMOTE_PATH}${repo})
+    fi
+    
+    rsync -avh ${TMP_DIR}/${localdir}/* ~/.vim
+}
+
+###
+### main
+###
 set -e
 ### Install Packages ###
 if [ "$MACHTYPE" != "x86_64-apple-darwin14" ] && [ "$SKIP_APT_GET" == "" ];
@@ -94,12 +112,10 @@ done
 
 # Install Conque-GDB
 echo Cloning and installing Conque-GDB
-if [ ! -e ${TMP_DIR}/${CONQUE_DIR} ];
-then
-    (cd ${TMP_DIR} && git clone ${GIT_REMOTE_PATH}${CONQUE_REPO})
-fi
+install_vim_plugin_from_repo ${CONQUE_REPO} ${CONQUE_DIR}
 
-rsync -avh ${TMP_DIR}/${CONQUE_DIR}/* ~/.vim
+echo Cloning and installing gitv
+install_vim_plugin_from_repo ${GITV_REPO} ${GITV_DIR}
 
 # Setup golang if it's installed
 if [ "$GOROOT" == "" ] && [ "$(which go)" != "" ];
