@@ -61,7 +61,7 @@ git config --global user.name "Mike Dulaney"
 git config --global user.email k.michael.dulaney@gmail.com
 git config --global color.ui auto
 git config --global branch.autosetupmerge always
-git config --global push.default simple
+git config --global push.default matching
 git config --global alias.st status
 git config --global alias.ci commit
 git config --global alias.br branch
