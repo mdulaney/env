@@ -46,3 +46,5 @@ nnoremap <space>grm :Gremove<CR>
 let g:ConqueTerm_CloseOnEnd = 1
 
 set diffopt+=vertical
+
+let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.zip']
