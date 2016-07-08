@@ -43,8 +43,13 @@ nnoremap <space>grm :Gremove<CR>
 :map <leader>cp :ConqueTermSplit python<CR>
 :map <leader>cs :ConqueTermSplit bash<CR>
 
+let g:ack_default_options = " -H --nocolor --nogroup --column"
+:map <leader>fcp :Ack --cpp<space>
+:map <leader>fcc :Ack --cc<space>
+:map <leader>fpy :Ack --python<space>
+
 let g:ConqueTerm_CloseOnEnd = 1
 
 set diffopt+=vertical
 
-let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.zip']
+let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.zip', '\.a', '\.so']
