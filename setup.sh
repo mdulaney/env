@@ -27,7 +27,7 @@ set -e
 if [ "$MACHTYPE" != "x86_64-apple-darwin14" ] && [ "$SKIP_APT_GET" == "" ];
 then
     sudo apt-get update
-    sudo apt-get install vim wireshark tmux xmonad gcc gdb ctags cifs-utils \
+    sudo apt-get install vim-gtk wireshark tmux xmonad gcc gdb ctags cifs-utils \
                   chromium-browser irssi python-dev python-setuptools python-pip \
                   socat
 fi
@@ -56,6 +56,7 @@ fi
 #cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
 
 ### Setup git Config ###
+echo "Setting up git config"
 rm ~/.gitconfig || true
 git config --global user.name "Mike Dulaney"
 git config --global user.email k.michael.dulaney@gmail.com
@@ -71,15 +72,20 @@ git config --global alias.lg log -p
 git config --global alias.lg1 "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 ### Setup vim plugins ###
-REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git rking/ag.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git fs111/pydoc.vim.git scrooloose/syntastic"
+REPOS="tpope/vim-pathogen.git tpope/vim-fugitive.git mileszs/ack.vim.git scrooloose/nerdtree.git Lokaltog/vim-easymotion.git fs111/pydoc.vim.git scrooloose/syntastic"
 
 BUNDLE_DIR=~/.vim/bundle
 
-mkdir -p ~/.vim/autoload
+echo mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/syntax
 mkdir -p ~/.vim/ftdetect
 
 cp vim-plugins/autoload/pathogen.vim ~/.vim/autoload
+
+if [ ! -e "/usr/bin/ack" ];
+then
+    sudo ln -s /usr/bin/ack-grep /usr/bin/ack
+fi
 
 if [ ! -d "$BUNDLE_DIR" ]; then
     echo Warning: bundle directory $BUNDLE_DIR does not exist, creating it
