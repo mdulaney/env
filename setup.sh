@@ -53,7 +53,7 @@ then
 fi
 
 ### Copy gnome profile
-cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
+#cp gnome-profile/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default/
 
 ### Setup git Config ###
 rm ~/.gitconfig || true
