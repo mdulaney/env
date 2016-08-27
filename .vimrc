@@ -53,3 +53,8 @@ let g:ConqueTerm_CloseOnEnd = 1
 set diffopt+=vertical
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.zip', '\.a', '\.so']
+
+let &printexpr="(v:cmdarg=='' ? ".
+    \"system('lpr' . (&printdevice == '' ? '' : ' -P' . &printdevice)".
+    \". ' ' . v:fname_in) . delete(v:fname_in) + v:shell_error".
+    \" : system('mv '.v:fname_in.' '.v:cmdarg) + v:shell_error)"
