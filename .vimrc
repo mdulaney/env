@@ -1,11 +1,11 @@
 set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -61,7 +61,7 @@ nnoremap <space>gps :Gpush<CR>
 nnoremap <space>gpl :Gpull<CR>
 nnoremap <space>grm :Gremove<CR>
 
-:command -nargs=* Make make | cwindow 15
+:command -nargs=* Make make -j4 | cwindow 15
 :map <Leader>cb :Make<CR>
 
 :map <leader>cp :ConqueTermSplit python<CR>
@@ -85,5 +85,9 @@ let &printexpr="(v:cmdarg=='' ? ".
     \" : system('mv '.v:fname_in.' '.v:cmdarg) + v:shell_error)"
 
 :set popt=portrait:y,left:18pt,right:18pt,top:18pt,syntax:n,header:0
-nnoremap <C-l> :set hlsearch!<CR>
+nnoremap <C-l> :nohl<CR> 
+let g:auto_save = 1
 
+syntax enable
+set background=dark
+colorscheme solarized
