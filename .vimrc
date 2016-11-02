@@ -85,3 +85,5 @@ let &printexpr="(v:cmdarg=='' ? ".
     \" : system('mv '.v:fname_in.' '.v:cmdarg) + v:shell_error)"
 
 :set popt=portrait:y,left:18pt,right:18pt,top:18pt,syntax:n,header:0
+nnoremap <C-l> :set hlsearch!<CR>
+
