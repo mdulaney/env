@@ -29,7 +29,7 @@ then
     sudo apt-get update
     sudo apt-get install vim-gtk wireshark tmux xmonad gcc gdb ctags cifs-utils \
                   chromium-browser irssi python-dev python-setuptools python-pip \
-                  socat
+                  socat silversearcher-ag
 fi
 
 CONFIG_FILES=".bashrc .vimrc .inputrc .xinitrc .tmux.conf"
