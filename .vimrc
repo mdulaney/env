@@ -91,3 +91,5 @@ let g:auto_save = 1
 syntax enable
 set background=dark
 colorscheme solarized
+
+nnoremap <C-]> :ALEGoToDefinition<CR>
